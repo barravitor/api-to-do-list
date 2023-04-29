@@ -1,0 +1,23 @@
+{
+	"name": "api-to-do-list",
+	"dockerComposeFile": [
+		"docker-compose.yml"
+	],
+	"service": "api-to-do-list",
+	"settings": {
+	  "terminal.integrated.shell.linux": null
+	},
+	"extensions": [
+		"ms-azuretools.vscode-docker",
+		"editorconfig.editorconfig",
+		"dbaeumer.vscode-eslint",
+		"donjayamanne.githistory",
+		"eamodio.gitlens",
+		"ms-vscode.vscode-typescript-tslint-plugin",
+		"waderyan.gitblame",
+		"arjun.swagger-viewer",
+		"redhat.vscode-yaml"
+	],
+	"workspaceMount": "source=${localWorkspaceFolder}/api-to-do-list,target=/home/api-to-do-list,type=bind,consistency=delegated",
+	"workspaceFolder": "/home/api-to-do-list"
+}
