@@ -61,8 +61,11 @@ export default function LoginPage() {
       }
 
       if (resJson.token) {
-        localStorage.setItem('user', JSON.stringify(resJson));
-        router.push("/");
+        let user;
+        if (typeof window !== 'undefined') {
+          user = JSON.parse(localStorage.getItem('user') || '{}');
+          router.push("/");
+        }
       } else {
         setMessage({
           title: 'Erro no login',
@@ -82,7 +85,9 @@ export default function LoginPage() {
   }
 
   const redirectTo = (route: string) => {
-    router.push(route);
+    if (typeof window !== 'undefined') {
+      router.push(route);
+    }
   }
 
   return (

@@ -6,4 +6,6 @@ WORKDIR /home/to-do-list
 
 RUN npm i pm2 -g
 
+RUN npm i -g firebase-tools
+
 EXPOSE 3000

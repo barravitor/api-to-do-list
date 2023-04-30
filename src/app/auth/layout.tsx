@@ -5,10 +5,15 @@ import { IUser } from '../../models/user';
 
 function Provider({ children }: { children: React.ReactNode}) {
   const router = useRouter();
-  const session: IUser = JSON.parse(localStorage.getItem('user') || '{}') as IUser;
+  let user: IUser = {};
+  if (typeof window !== 'undefined') {
+    user = JSON.parse(localStorage.getItem('user') || '{}') as IUser;
+  }
 
-  if (session.token) {
-    router.push('/');
+  if (user.token) {
+    if (typeof window !== 'undefined') {
+      router.push('/');
+    }
     return <div></div>;
   }
 

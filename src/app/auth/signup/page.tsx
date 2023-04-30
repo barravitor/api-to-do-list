@@ -79,13 +79,16 @@ export default function LoginPage() {
       }
 
       if (resJson.message === 'User Successfully Added') {
-        localStorage.setItem('user', JSON.stringify({
-          "id": resJson.id,
-          "name": name,
-          "email": email,
-          "token": resJson.token
-        }));
-        router.push("/");
+        if (typeof window !== 'undefined') {
+          localStorage.setItem('user', JSON.stringify({
+            "id": resJson.id,
+            "name": name,
+            "email": email,
+            "token": resJson.token
+          }));
+          router.push("/");
+        }
+
       } else {
         setMessage({
           title: 'Erro ao cadastrar o usuário',
@@ -105,7 +108,9 @@ export default function LoginPage() {
   }
 
   const redirectTo = (route: string) => {
-    router.push(route);
+    if (typeof window !== 'undefined') {
+      router.push(route);
+    }
   }
 
   return (

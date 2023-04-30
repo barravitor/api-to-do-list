@@ -9,10 +9,15 @@ interface Props {
 
 export default function Providers({ children }: Props) {
     const router = useRouter();
-    const session: IUser = JSON.parse(localStorage.getItem('user') || '{}') as IUser;
+    let user: IUser = {};
+    if (typeof window !== 'undefined') {
+      user = JSON.parse(localStorage.getItem('user') || '{}') as IUser;
+    }
   
-    if (!session.token) {
-      router.push('/auth/signin');
+    if (!user.token) {
+      if (typeof window !== 'undefined') {
+        router.push('/auth/signin');
+      }
       return <div></div>;
     }
 

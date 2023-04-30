@@ -57,7 +57,10 @@ export default function HomePage() {
   const [openUpdateTaskModal, setOpenUpdateTaskModal] = React.useState<boolean>(false);
 
   let getTasks = async () => {
-    const user = JSON.parse(localStorage.getItem('user') || '{}');
+    let user;
+    if (typeof window !== 'undefined') {
+      user = JSON.parse(localStorage.getItem('user') || '{}');
+    }
 
     if (!user.token) {
       return;
@@ -89,7 +92,10 @@ export default function HomePage() {
 
   let postTask = async (e: any) => {
     e.preventDefault();
-    const user = JSON.parse(localStorage.getItem('user') || '{}');
+    let user;
+    if (typeof window !== 'undefined') {
+      user = JSON.parse(localStorage.getItem('user') || '{}');
+    }
 
     if (!user.token) {
       return;
@@ -129,7 +135,10 @@ export default function HomePage() {
   }
 
   let deleteTask = async (id: number) => {
-    const user = JSON.parse(localStorage.getItem('user') || '{}');
+    let user;
+    if (typeof window !== 'undefined') {
+      user = JSON.parse(localStorage.getItem('user') || '{}');
+    }
 
     if (!user.token) {
       return;
@@ -157,7 +166,10 @@ export default function HomePage() {
   }
 
   let putTask = async () => {
-    const user = JSON.parse(localStorage.getItem('user') || '{}');
+    let user;
+    if (typeof window !== 'undefined') {
+      user = JSON.parse(localStorage.getItem('user') || '{}');
+    }
 
     if (!user.token) {
       return;
@@ -219,7 +231,6 @@ export default function HomePage() {
     setMessage({});
   }
 
-  // 🆗 Ship it
   useEffect(() => {
     (async () => {
       const users = await getTasks();
