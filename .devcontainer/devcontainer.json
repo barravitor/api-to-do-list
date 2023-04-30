@@ -1,9 +1,9 @@
 {
-	"name": "api-to-do-list",
+	"name": "to-do-list",
 	"dockerComposeFile": [
 		"docker-compose.yml"
 	],
-	"service": "api-to-do-list",
+	"service": "to-do-list",
 	"settings": {
 	  "terminal.integrated.shell.linux": null
 	},
@@ -18,6 +18,6 @@
 		"arjun.swagger-viewer",
 		"redhat.vscode-yaml"
 	],
-	"workspaceMount": "source=${localWorkspaceFolder}/api-to-do-list,target=/home/api-to-do-list,type=bind,consistency=delegated",
-	"workspaceFolder": "/home/api-to-do-list"
+	"workspaceMount": "source=${localWorkspaceFolder}/to-do-list,target=/home/to-do-list,type=bind,consistency=delegated",
+	"workspaceFolder": "/home/to-do-list"
 }

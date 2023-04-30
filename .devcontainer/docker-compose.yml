@@ -1,16 +1,16 @@
 version: '3.8'
 services:
-  api-to-do-list:
+  to-do-list:
     build:
       context: .
       dockerfile: Dockerfile
     networks:
-      - api-to-do-list_network
-    working_dir: /home/api-to-do-list
-    image: api-to-do-list:latest
+      - to-do-list_network
+    working_dir: /home/to-do-list
+    image: to-do-list:latest
     volumes:
-      - ..:/home/api-to-do-list
-    container_name: api-to-do-list
+      - ..:/home/to-do-list
+    container_name: to-do-list
     restart: 'no'
     ports:
       - 3000:3000
@@ -19,8 +19,8 @@ services:
     command: /bin/sh -c "while sleep 1000; do :; done"
 
 networks:
-  api-to-do-list_network:
-    name: api-to-do-list_network
+  to-do-list_network:
+    name: to-do-list_network
     driver: bridge
     driver_opts:
       com.docker.network.enable_ipv6: "true"
