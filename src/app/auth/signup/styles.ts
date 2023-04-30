@@ -5,7 +5,7 @@ export const LoginContainer = styled("div")`
   flex-direction: column;
   z-index: 1;
   width: 500px;
-  height: 570px;
+  height: 600px;
   background-color: #dfdfdf;
   text-align: center;
   margin: 0 auto;

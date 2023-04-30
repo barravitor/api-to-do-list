@@ -22,3 +22,9 @@ export const MessageError = styled("p")`
   margin: 0;
   color: red;
 `;
+
+export const BtnRedirect = styled("div")`
+  display: flex;
+  align-self: start;
+  padding-left: 50px;
+`

@@ -10,11 +10,14 @@ import TextField from '@mui/material/TextField';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import Button from '@mui/material/Button';
+import { useRouter } from 'next/navigation';
 
 import { LoginContainer } from './styles';
-import { MessageError, MessageErrorContainer, Page, Title } from '../styles';
+import { MessageError, MessageErrorContainer, Page, Title, BtnRedirect } from '../styles';
 
 export default function LoginPage() {
+  const router = useRouter();
+
   const [username, setUsername] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [message, setMessage] = React.useState({
@@ -59,10 +62,7 @@ export default function LoginPage() {
 
       if (resJson.token) {
         localStorage.setItem('user', JSON.stringify(resJson));
-        setMessage({
-          title: 'Acesso liberado com sucesso!',
-          description: ''
-        });
+        router.push("/");
       } else {
         setMessage({
           title: 'Erro no login',
@@ -81,10 +81,14 @@ export default function LoginPage() {
     })
   }
 
+  const redirectTo = (route: string) => {
+    router.push(route);
+  }
+
   return (
     <Page>
       <LoginContainer>
-        <Title>Login</Title>
+        <Title>Entrar</Title>
         <TextField label="Username" sx={{ m: 1, width: '400px' }} id="outlined-basic-username" variant="outlined" type="text" value={username} onChange={(e) => {setUsername(e.target.value); clearMessage()}}></TextField>
         <FormControl sx={{ m: 1, width: '400px' }} variant="outlined">
           <InputLabel htmlFor="outlined-adornment-password">Senha</InputLabel>
@@ -110,6 +114,12 @@ export default function LoginPage() {
         </FormControl>
 
         <Button variant="contained" sx={{ width: '400px', }} type="submit" onClick={handleSubmit}>Entrar</Button>
+
+        <BtnRedirect>
+          <Button sx={{ fontSize: '11px' }} variant="text" onClick={() => redirectTo('/auth/signup')}>
+            Clique aqui para criar uma conta
+          </Button>
+        </BtnRedirect>
 
         <MessageErrorContainer> 
           {message && message.title ? (<MessageError>{message.title}</MessageError>) : ''}
