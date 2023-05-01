@@ -87,8 +87,8 @@ export default function LoginPage() {
     <Page>
       <LoginContainer>
         <Title>Entrar</Title>
-        <TextField label="Username" sx={{ m: 1, width: '400px' }} id="outlined-basic-username" variant="outlined" type="text" value={username} onChange={(e) => {setUsername(e.target.value); clearMessage()}}></TextField>
-        <FormControl sx={{ m: 1, width: '400px' }} variant="outlined">
+        <TextField label="Username" sx={{ m: 1, width: '70%' }} id="outlined-basic-username" variant="outlined" type="text" value={username} onChange={(e) => {setUsername(e.target.value); clearMessage()}}></TextField>
+        <FormControl sx={{ m: 1, width: '70%' }} variant="outlined">
           <InputLabel htmlFor="outlined-adornment-password">Senha</InputLabel>
           <OutlinedInput
             id="outlined-adornment-password"
@@ -111,7 +111,7 @@ export default function LoginPage() {
           />
         </FormControl>
 
-        <Button variant="contained" sx={{ width: '400px', }} type="submit" onClick={handleSubmit}>Entrar</Button>
+        <Button variant="contained" sx={{ width: '70%', }} type="submit" onClick={handleSubmit}>Entrar</Button>
 
         <BtnRedirect>
           <Button sx={{ fontSize: '11px' }} variant="text" onClick={() => redirectTo('/auth/signup')}>

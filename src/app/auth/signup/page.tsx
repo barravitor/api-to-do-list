@@ -111,10 +111,10 @@ export default function LoginPage() {
     <Page>
       <LoginContainer>
         <Title>Cadastro</Title>
-        <TextField label="Nome completo" sx={{ m: 1, width: '400px' }} id="outlined-basic-name" variant="outlined" type="text" value={name} onChange={(e) => { setName(e.target.value); clearMessage() }}></TextField>
-        <TextField label="Username" sx={{ m: 1, width: '400px' }} id="outlined-basic-username" variant="outlined" type="text" value={username} onChange={(e) => {setUsername(e.target.value); clearMessage()}}></TextField>
-        <TextField label="Email" sx={{ m: 1, width: '400px' }} id="outlined-basic-email" variant="outlined" type="email" value={email} onChange={(e) => {setEmail(e.target.value); clearMessage()}}></TextField>
-        <FormControl sx={{ m: 1, width: '400px' }} variant="outlined">
+        <TextField label="Nome completo" sx={{ m: 1, width: '70%' }} id="outlined-basic-name" variant="outlined" type="text" value={name} onChange={(e) => { setName(e.target.value); clearMessage() }}></TextField>
+        <TextField label="Username" sx={{ m: 1, width: '70%' }} id="outlined-basic-username" variant="outlined" type="text" value={username} onChange={(e) => {setUsername(e.target.value); clearMessage()}}></TextField>
+        <TextField label="Email" sx={{ m: 1, width: '70%' }} id="outlined-basic-email" variant="outlined" type="email" value={email} onChange={(e) => {setEmail(e.target.value); clearMessage()}}></TextField>
+        <FormControl sx={{ m: 1, width: '70%' }} variant="outlined">
           <InputLabel htmlFor="outlined-adornment-password">Senha</InputLabel>
           <OutlinedInput
             id="outlined-adornment-password"
@@ -137,7 +137,7 @@ export default function LoginPage() {
           />
         </FormControl>
 
-        <FormControl sx={{ m: 1, width: '400px' }} variant="outlined">
+        <FormControl sx={{ m: 1, width: '70%' }} variant="outlined">
           <InputLabel htmlFor="outlined-adornment-confirm-password">Confirmar a Senha</InputLabel>
           <OutlinedInput
             id="outlined-adornment-confirm-password"
@@ -160,7 +160,7 @@ export default function LoginPage() {
           />
         </FormControl>
 
-        <Button variant="contained" sx={{ width: '400px', }} type="submit" onClick={handleSubmit}>Cadastrar</Button>
+        <Button variant="contained" sx={{ width: '70%', }} type="submit" onClick={handleSubmit}>Cadastrar</Button>
         <BtnRedirect>
           <Button sx={{ fontSize: '11px' }} variant="text" onClick={() => redirectTo('/auth/signin')}>
             Clique aqui para se logar

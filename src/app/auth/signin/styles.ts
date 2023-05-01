@@ -5,6 +5,8 @@ export const Page = styled("div")`
   height: 100vh;
   align-items: center;
   background-color: #2094c1;
+  padding: 0;
+  margin: 0;
 `;
 
 export const LoginContainer = styled("div")`
@@ -18,6 +20,10 @@ export const LoginContainer = styled("div")`
   margin: 0 auto;
   align-items: center;
   border-radius: 50px;
+
+  @media (max-width: 550px) {
+    width: 90%;
+  }
 `;
 
 export const Title = styled("p")`

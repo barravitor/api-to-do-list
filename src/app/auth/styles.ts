@@ -5,6 +5,8 @@ export const Page = styled("div")`
   height: 100vh;
   align-items: center;
   background-color: #2094c1;
+  padding: 0;
+  margin: 0;
 `;
 
 export const Title = styled("p")`

@@ -11,4 +11,8 @@ export const LoginContainer = styled("div")`
   margin: 0 auto;
   align-items: center;
   border-radius: 50px;
+
+  @media (max-width: 550px) {
+    width: 90%;
+  }
 `;

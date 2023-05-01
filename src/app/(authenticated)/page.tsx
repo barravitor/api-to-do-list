@@ -29,20 +29,7 @@ const Demo = styled('div')(({ theme }) => ({
   backgroundColor: theme.palette.background.paper,
 }));
 
-const style = {
-  position: 'absolute' as 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 550,
-  bgcolor: 'background.paper',
-  border: '1px solid #000',
-  boxShadow: 24,
-  p: 4,
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center'
-};
+import { Style } from './styles';
 
 export default function HomePage() {
   const [dense, setDense] = React.useState<boolean>(false);
@@ -279,13 +266,13 @@ export default function HomePage() {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style}>
+        <Box sx={Style}>
           <Typography id="modal-modal-title" variant="h6" component="h2" sx={{textAlign: 'center'}}>
             Cadastrar nova task
           </Typography>
-          <TextField label="Nome da task" sx={{ m: 1, width: '500px' }} id="outlined-basic-name" variant="outlined" type="text" value={taskName} onChange={(e) => { setTaskName(e.target.value); clearMessage() }}></TextField>
+          <TextField label="Nome da task" sx={{ m: 1, width: '90%' }} id="outlined-basic-name" variant="outlined" type="text" value={taskName} onChange={(e) => { setTaskName(e.target.value); clearMessage() }}></TextField>
 
-          <Button variant="contained" sx={{ width: '500px', marginTop: '10px', marginBottom: '5px' }} onClick={postTask}>
+          <Button variant="contained" sx={{ width: '90%', marginTop: '10px', marginBottom: '5px' }} onClick={postTask}>
             Cadastrar task
           </Button>
         </Box>
@@ -298,16 +285,16 @@ export default function HomePage() {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style}>
+        <Box sx={Style}>
           <Typography id="modal-modal-title" variant="h6" component="h2" sx={{textAlign: 'center'}}>
             Detalhes da task
           </Typography>
 
-          <TextField label="Nome da task" sx={{ m: 1, width: '500px' }} id="outlined-basic-name" variant="outlined" type="text" value={taskName} onChange={(e) => { setTaskName(e.target.value); clearMessage() }}></TextField>
+          <TextField label="Nome da task" sx={{ m: 1, width: '90%' }} id="outlined-basic-name" variant="outlined" type="text" value={taskName} onChange={(e) => { setTaskName(e.target.value); clearMessage() }}></TextField>
           <FormGroup>
             <FormControlLabel control={<Switch checked={taskRealized} onClick={(e) => { setTaskRealized(!taskRealized); clearMessage() }} />} label="Task finalizada?" />
           </FormGroup>
-          <Button variant="contained" sx={{ width: '500px', marginTop: '10px', marginBottom: '5px' }} onClick={putTask}>
+          <Button variant="contained" sx={{ width: '90%', marginTop: '10px', marginBottom: '5px' }} onClick={putTask}>
             Atualizar task
           </Button>
         </Box>
