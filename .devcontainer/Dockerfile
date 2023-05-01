@@ -8,4 +8,6 @@ RUN npm i pm2 -g
 
 RUN npm i -g firebase-tools@11.20.0
 
+RUN npm i -g vercel
+
 EXPOSE 3000
