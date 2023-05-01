@@ -57,9 +57,8 @@ export default function LoginPage() {
       }
 
       if (resJson.token) {
-        let user;
         if (typeof window !== 'undefined') {
-          user = JSON.parse(localStorage.getItem('user') || '{}');
+          localStorage.setItem('user', JSON.stringify(resJson));
           router.push("/");
         }
       } else {
