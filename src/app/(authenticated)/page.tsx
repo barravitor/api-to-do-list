@@ -74,11 +74,7 @@ export default function HomePage() {
       }
     });
 
-    console.log(res);
-
     let resJson = await res.json();
-
-    console.log('resJson', resJson)
 
     if (resJson.message === 'Tasks not found') {
       setTasks([]);
@@ -157,8 +153,6 @@ export default function HomePage() {
 
     let resJson = await res.json();
 
-    console.log('resJson', resJson)
-
     if (resJson.message === 'Task deleted Successfully') {
       setTasks(tasks.filter((task: ITask) => task.id !== id));
       return;
@@ -190,8 +184,6 @@ export default function HomePage() {
 
     let resJson = await res.json();
 
-    console.log('resJson', resJson)
-
     if (resJson.message === 'Task Successfully Updated') {
       const index: number = tasks.findIndex((task: ITask) => String(task.id) === String(taskId));
       tasks[index].name = taskName;
@@ -213,7 +205,6 @@ export default function HomePage() {
   }
 
   const openModalUpdateTask = (task: ITask) => {
-    console.log('task', task)
     setTaskId(task.id);
     setTaskName(task.name);
     setTaskRealized(task.realized === 0 ? false : true);

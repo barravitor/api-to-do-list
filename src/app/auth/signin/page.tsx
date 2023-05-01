@@ -46,11 +46,7 @@ export default function LoginPage() {
         }
       });
 
-      console.log(res);
-
       let resJson = await res.json();
-
-      console.log('resJson', resJson)
 
       if (!resJson) {
         setMessage({
@@ -72,9 +68,7 @@ export default function LoginPage() {
           description: resJson.message
         });
       }
-    } catch (err) {
-      console.log(err);
-    }
+    } catch (err) { }
   };
 
   const clearMessage = () => {

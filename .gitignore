@@ -36,3 +36,5 @@ next-env.d.ts
 
 .firebase
 firebase-debug.log
+.vscode
+to-do-list-firebase-hosting.json
