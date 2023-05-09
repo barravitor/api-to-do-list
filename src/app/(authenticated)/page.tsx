@@ -25,6 +25,8 @@ import Switch from '@mui/material/Switch';
 import Modal from '@mui/material/Modal';
 import { ITask } from '../../models/task';
 
+import MenuBar from '../../components/menuBar';
+
 const Demo = styled('div')(({ theme }) => ({
   backgroundColor: theme.palette.background.paper,
 }));
@@ -221,6 +223,7 @@ export default function HomePage() {
 
   return (
     <Box sx={{display: 'flex', alignItems: 'center', flexDirection: 'column' }}>
+      <MenuBar />
       <Grid item xs={12} md={6} sx={{ display: 'flex', flexDirection: 'column', width: '95%' }}>
         <Typography sx={{ mt: 4, mb: 2, textAlign: 'center' }} variant="h6" component="div">
           Lista de tasks
