@@ -58,7 +58,10 @@ export default function LoginPage() {
 
       if (resJson.token) {
         if (typeof window !== 'undefined') {
-          localStorage.setItem('user', JSON.stringify(resJson));
+          let user: any = resJson;;
+          user.username = username;
+
+          localStorage.setItem('user', JSON.stringify(user));
           router.push("/");
         }
       } else {

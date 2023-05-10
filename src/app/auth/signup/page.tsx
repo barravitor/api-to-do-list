@@ -43,6 +43,14 @@ export default function LoginPage() {
   let handleSubmit = async (e: any) => {
     e.preventDefault();
     try {
+      if (!name || !username || !email || !password || !confirmPassword) {
+        setMessage({
+          title: 'Erro ao cadastrar o usuário',
+          description: 'Tem campos em branco'
+        });
+        return;
+      }
+
       if (password !== confirmPassword) {
         setMessage({
           title: 'As senhas não são iguais',
@@ -78,6 +86,7 @@ export default function LoginPage() {
         if (typeof window !== 'undefined') {
           localStorage.setItem('user', JSON.stringify({
             "id": resJson.id,
+            "username": username,
             "name": name,
             "email": email,
             "token": resJson.token

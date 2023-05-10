@@ -17,11 +17,14 @@ import TextField from '@mui/material/TextField';
 
 import { useRouter } from 'next/navigation';
 import { IUser } from '../models/user';
+import UserAccountModal from './modals/userAccount';
+import AccountSettingsModal from './modals/accountSettings';
+
 
 const pages: string[] = [''];
 const settings: string[] = ['Dados da conta', 'Configurações' , 'Sair'];
 
-import { Style } from './styles';
+import { Style, UserName } from './styles';
 
 function ResponsiveAppBar() {
     const router = useRouter();
@@ -71,23 +74,8 @@ function ResponsiveAppBar() {
         setOpenUserAccountModal(false)
     }
 
-    const postUpdateUser = () => {
-        console.log('Atualizou');
-        setOpenUserAccountModal(false);
-    }
-
-    const postDeleteUser = () => {
-        console.log('Deletou');
-        setOpenUserAccountModal(false);
-    }
-
     const closeUsernameAndPasswordModal = () => {
         setOpenUsernameAndPasswordModal(false)
-    }
-
-    const postUpdateUsernameAndPassword = () => {
-        console.log('Alterou usuário e senha');
-        setOpenUsernameAndPasswordModal(false);
     }
 
     return (
@@ -112,43 +100,6 @@ function ResponsiveAppBar() {
                 >
                     TO DO LIST
                 </Typography>
-
-                {/* <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-                    <IconButton
-                    size="large"
-                    aria-label="account of current user"
-                    aria-controls="menu-appbar"
-                    aria-haspopup="true"
-                    onClick={handleOpenNavMenu}
-                    color="inherit"
-                    >
-                    <MenuIcon />
-                    </IconButton>
-                    <Menu
-                    id="menu-appbar"
-                    anchorEl={anchorElNav}
-                    anchorOrigin={{
-                        vertical: 'bottom',
-                        horizontal: 'left',
-                    }}
-                    keepMounted
-                    transformOrigin={{
-                        vertical: 'top',
-                        horizontal: 'left',
-                    }}
-                    open={Boolean(anchorElNav)}
-                    onClose={handleCloseNavMenu}
-                    sx={{
-                        display: { xs: 'block', md: 'none' },
-                    }}
-                    >
-                    {pages.map((page) => (
-                        <MenuItem key={page} onClick={handleCloseNavMenu}>
-                        <Typography textAlign="center">{page}</Typography>
-                        </MenuItem>
-                    ))}
-                    </Menu>
-                </Box> */}
 
                 <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
                 <Typography
@@ -183,26 +134,27 @@ function ResponsiveAppBar() {
                 </Box>
 
                 <Box sx={{ flexGrow: 0 }}>
+                    {user.name}
                     <Tooltip title="Open settings">
-                    <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                        <Avatar alt="user avatar" src={user && user.picture ? user.picture : ''} />
-                    </IconButton>
+                        <IconButton onClick={handleOpenUserMenu} sx={{ p: 0, pl: 1 }}>
+                            <Avatar alt="user avatar" src={user && user.picture ? `data:image/jpeg;base64,${user.picture}` : ''} />
+                        </IconButton>
                     </Tooltip>
                     <Menu
-                    sx={{ mt: '45px' }}
-                    id="menu-appbar"
-                    anchorEl={anchorElUser}
-                    anchorOrigin={{
-                        vertical: 'top',
-                        horizontal: 'right',
-                    }}
-                    keepMounted
-                    transformOrigin={{
-                        vertical: 'top',
-                        horizontal: 'right',
-                    }}
-                    open={Boolean(anchorElUser)}
-                    onClose={handleCloseUserMenu}
+                        sx={{ mt: '45px' }}
+                        id="menu-appbar"
+                        anchorEl={anchorElUser}
+                        anchorOrigin={{
+                            vertical: 'top',
+                            horizontal: 'right',
+                        }}
+                        keepMounted
+                        transformOrigin={{
+                            vertical: 'top',
+                            horizontal: 'right',
+                        }}
+                        open={Boolean(anchorElUser)}
+                        onClose={handleCloseUserMenu}
                     >
                     {settings.map((setting) => (
                         <MenuItem key={setting} onClick={() => actionMenu(setting)}>
@@ -215,46 +167,10 @@ function ResponsiveAppBar() {
             </Container>
 
             {/* Modal para atualizar os dados de usuário */}
-            <Modal
-                open={openUserAccountModal}
-                onClose={closeUserAccountModal}
-                aria-labelledby="modal-modal-title"
-                aria-describedby="modal-modal-description"
-            >
-                <Box sx={Style}>
-                    <Typography id="modal-modal-title" variant="h6" component="h2" sx={{textAlign: 'center'}}>
-                        Atualizar dados de usuário
-                    </Typography>
-                    {/* <TextField label="Nome da task" sx={{ m: 1, width: '90%' }} id="outlined-basic-name" variant="outlined" type="text" value={taskName} onChange={(e) => { setTaskName(e.target.value); clearMessage() }}></TextField> */}
+            <UserAccountModal open={openUserAccountModal} close={closeUserAccountModal} />
 
-                    <Button variant="contained" sx={{ width: '90%', marginTop: '10px', marginBottom: '5px' }} onClick={postUpdateUser}>
-                        Atualizar
-                    </Button>
-
-                    <Button variant="contained" sx={{ width: '90%', marginTop: '15px', marginBottom: '5px' }} onClick={postDeleteUser}>
-                        Deletar usuário
-                    </Button>
-                </Box>
-            </Modal>
-
-            {/* Modal para atualizar usuário e senha */}
-            <Modal
-                open={openUsernameAndPasswordModal}
-                onClose={closeUsernameAndPasswordModal}
-                aria-labelledby="modal-modal-title"
-                aria-describedby="modal-modal-description"
-            >
-                <Box sx={Style}>
-                    <Typography id="modal-modal-title" variant="h6" component="h2" sx={{textAlign: 'center'}}>
-                        Atualizar usuário e senha
-                    </Typography>
-                    {/* <TextField label="Nome da task" sx={{ m: 1, width: '90%' }} id="outlined-basic-name" variant="outlined" type="text" value={taskName} onChange={(e) => { setTaskName(e.target.value); clearMessage() }}></TextField> */}
-
-                    <Button variant="contained" sx={{ width: '90%', marginTop: '10px', marginBottom: '5px' }} onClick={postUpdateUsernameAndPassword}>
-                        Atualizar
-                    </Button>
-                </Box>
-            </Modal>
+            {/* Modal para atualizar nome de usuário e senha */}
+            <AccountSettingsModal open={openUsernameAndPasswordModal} close={closeUsernameAndPasswordModal} />
         </AppBar>
     );
 }

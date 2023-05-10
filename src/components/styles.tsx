@@ -1,3 +1,5 @@
+import styled from "@emotion/styled";
+
 export const Style = {
     position: 'absolute' as 'absolute',
     top: '50%',
@@ -12,3 +14,8 @@ export const Style = {
     flexDirection: 'column',
     alignItems: 'center',
 };
+
+export const UserName = styled("div")`
+  padding: 0;
+  margin: 0;
+`;
