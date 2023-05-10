@@ -18,6 +18,9 @@ export const Style = {
 export const Container = {
     display: 'flex',
     width: '100%',
+    "@media (max-width: 840px)": {
+      flexDirection: 'column',
+    }
 };
 
 export const BoxLeft = {
@@ -25,6 +28,11 @@ export const BoxLeft = {
     alignItems: 'center',
     display: 'flex',
     flexDirection: 'column',
+
+    "@media (max-width: 840px)": {
+      width: '100%',
+      height: '250px'
+    }
 };
 
 export const BoxRigth = {
@@ -32,6 +40,10 @@ export const BoxRigth = {
     alignItems: 'center',
     display: 'flex',
     flexDirection: 'column',
+
+    "@media (max-width: 840px)": {
+      width: '100%',
+    }
 };
 
 export const MessageErrorContainer = styled("p")`
